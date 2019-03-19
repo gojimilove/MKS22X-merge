@@ -54,26 +54,30 @@ public class Merge {
   	while (count < data.length) {
   		if (loCount >= loData.length) {
   			for (int i = hiCount; i < hiData.length; i++) {
+  				System.out.println("HIGH: "+hiData[hiCount]);
   				data[count] = hiData[hiCount];
   				count++;
   			}
   		}
   		if (hiCount >= hiData.length) {
   			for (int i = loCount; i < loData.length; i++) {
+  				System.out.println("LOW: "+loData[loCount]);
   				data[count] = loData[loCount];
   				count++;
   			}
   		}
   		else if (loData[loCount] <= hiData[hiCount]) {
+  			System.out.println("LOW: "+loData[loCount]);
   			data[count] = loData[loCount];
   			loCount++;
   			count++;
   		} else {
+  			System.out.println("HIGH: "+hiData[hiCount]);
   			data[count] = hiData[hiCount];
   			hiCount++;
   			count++;
   		}
-  		System.out.println(data[count-1]);
+  		//System.out.println(data[count-1]);
   	}
 
   	System.out.print("FULL ARRAY: [");
