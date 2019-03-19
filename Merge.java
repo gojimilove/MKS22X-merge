@@ -61,6 +61,8 @@ public class Merge {
 
     //mergesort right side
     mergesort(hiData, lo, hi/2);
+
+    //merge 2 sorted arrays
   }
 
   public static void main(String[]args) {
