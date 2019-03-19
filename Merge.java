@@ -13,90 +13,84 @@ public class Merge {
       return;
     }
 
-    //split array
+    //split array in half
     int[] loData = Arrays.copyOfRange(data, lo, hi/2+1);
     int[] hiData = Arrays.copyOfRange(data, hi/2+1, hi+1);
 
-    System.out.println(lo);
-    System.out.println(hi/2);
-    System.out.println(hi);
-
-    // if (data.length <= 2) {
-    //   if(loData[0] > hiData[0]) {
-    //     int old = data[0];
-    //     data[0] = data[1];
-    //     data[1] = old;
-    //   }
-    //   System.out.print("FULL ARRAY: [");
-    //   for (int i = 0; i < data.length; i++) {
-    //   	System.out.print(data[i]+", ");
-    //   }
-    //   System.out.print("]\n\n");
-    //   return;
-    // }
+    // System.out.println(lo);
+    // System.out.println(hi/2);
+    // System.out.println(hi);
 
     //print data
-    System.out.print("FULL ARRAY: [");
-    for (int i = 0; i < data.length; i++) {
-    	System.out.print(data[i]+", ");
-    }
-    System.out.print("]\n\n");
+    // System.out.print("FULL ARRAY: [");
+    // for (int i = 0; i < data.length; i++) {
+    // 	System.out.print(data[i]+", ");
+    // }
+    // System.out.print("]\n\n");
 
     //print lower half
-    System.out.print("LOW DATA: [");
-    for (int i = 0; i < loData.length; i++) {
-    	System.out.print(loData[i]+", ");
-    }
-    System.out.print("]\n\n");
+    // System.out.print("LOW DATA: [");
+    // for (int i = 0; i < loData.length; i++) {
+    // 	System.out.print(loData[i]+", ");
+    // }
+    // System.out.print("]\n\n");
 
     //print higher half
-    System.out.print("HIGH DATA: [");
-    for (int i = 0; i < hiData.length; i++) {
-    	System.out.print(hiData[i]+", ");
-    }
-    System.out.print("]\n\n");
+    // System.out.print("HIGH DATA: [");
+    // for (int i = 0; i < hiData.length; i++) {
+    // 	System.out.print(hiData[i]+", ");
+    // }
+    // System.out.print("]\n\n");
 
     //mergesort left side
-    //mergesort(loData, lo, hi/2);
+    mergesort(loData, lo, hi/2);
 
     //mergesort right side
-    //mergesort(hiData, lo, hi/2);
+    mergesort(hiData, lo, hi/2);
 
-    //merge 2 sorted arrays
+    //merge 2 sorted arrays assuming they are both already sorted
     int loCount = 0;
     int hiCount = 0;
     int count = 0;
 
     while (count < data.length) {
     	if (loCount >= loData.length) {
+    		//if reached the end of low array, just add high values
     		data[count] = hiData[hiCount];
     		hiCount++;
     		count++;
     	} else if (hiCount >= hiData.length) {
+    		//if reached the end of high array, just add low values
     		data[count] = loData[loCount];
     		loCount++;
     		count++;
     	} else if (loData[loCount] <= hiData[hiCount]) {
+    		//if not at the end of either array yet, add smaller value counting from begining
+    		//value in low array smaller
     		data[count] = loData[loCount];
     		loCount++;
     		count++;
     	} else {
+    		//value in high array smaller
     		data[count] = hiData[hiCount];
     		hiCount++;
     		count++;
     	}
     }
+  }
 
-    //reprint data
-    System.out.print("FULL ARRAY: [");
+  public static void main(String[]args) {
+  	int[] data = new int[]{38,27,43,3,9,82,10};
+  	System.out.print("UNSORTED ARRAY: [");
     for (int i = 0; i < data.length; i++) {
     	System.out.print(data[i]+", ");
     }
     System.out.print("]\n\n");
-  }
-
-  public static void main(String[]args) {
-  	int[] data = new int[]{1, 9, 10, 55, 230, 500,  0, 5, 22, 55, 59,100};
   	mergesort(data);
+  	System.out.print("SORTED ARRAY: [");
+    for (int i = 0; i < data.length; i++) {
+    	System.out.print(data[i]+", ");
+    }
+    System.out.print("]\n\n");
   }
 }
