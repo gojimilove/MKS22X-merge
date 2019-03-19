@@ -57,16 +57,46 @@ public class Merge {
     System.out.print("]\n\n");
 
     //mergesort left side
-    mergesort(loData, lo, hi/2);
+    //mergesort(loData, lo, hi/2);
 
     //mergesort right side
-    mergesort(hiData, lo, hi/2);
+    //mergesort(hiData, lo, hi/2);
 
     //merge 2 sorted arrays
+    int loCount = 0;
+    int hiCount = 0;
+    int count = 0;
+
+    while (count < data.length) {
+    	if (loCount >= loData.length) {
+    		data[count] = hiData[hiCount];
+    		hiCount++;
+    		count++;
+    	} else if (hiCount >= hiData.length) {
+    		data[count] = loData[loCount];
+    		loCount++;
+    		count++;
+    	} else if (loData[loCount] <= hiData[hiCount]) {
+    		data[count] = loData[loCount];
+    		loCount++;
+    		count++;
+    	} else {
+    		data[count] = hiData[hiCount];
+    		hiCount++;
+    		count++;
+    	}
+    }
+
+    //reprint data
+    System.out.print("FULL ARRAY: [");
+    for (int i = 0; i < data.length; i++) {
+    	System.out.print(data[i]+", ");
+    }
+    System.out.print("]\n\n");
   }
 
   public static void main(String[]args) {
-  	int[] data = new int[]{38,27,43,3,9,82,10};
+  	int[] data = new int[]{1, 9, 10, 55, 230, 500,  0, 5, 22, 55, 59,100};
   	mergesort(data);
   }
 }
