@@ -14,9 +14,8 @@ public class Driver {
 	        int []data2 = new int[size];
 	        for(int i = 0; i < data1.length; i++){
 	          data1[i] = (int)(Math.random()*MAX);
-	          //data2[i] = data1[i];
+	          data2[i] = data1[i];
 	        }
-	        data2 = data1;
 	        long t1,t2;
 	        t1 = System.currentTimeMillis();
 	        Merge.mergesort(data2);
