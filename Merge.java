@@ -20,10 +20,10 @@ public class Merge {
 
   // helper method
   private static void mergesort(int[]data, int lo, int hi){
-    // if (data.length <= 43) {
-    // 	insertionsort(data, 1, data.length);
-    // 	return;
-    // }
+    if (data.length <= 43) {
+    	insertionsort(data, 1, data.length);
+    	return;
+    }
     if (lo >= hi) {
       return;
     }
