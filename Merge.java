@@ -1,6 +1,18 @@
 import java.util.*;
 
 public class Merge {
+	public static void insertionsort(int[] data, int lo, int hi) {
+		for (int i = lo; i < hi; i++) {
+			int current = data[i];
+			int j = 0;
+			for (j = i; j > 0 && current <= data[j - 1]; j--) {
+				data[j] = data[j - 1]; //move int at index (j-1) to index j
+			}
+			data[j] = current; //move int current to index j
+		}
+	}
+
+
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
     mergesort(data, 0, data.length-1);
@@ -8,6 +20,10 @@ public class Merge {
 
   // helper method
   private static void mergesort(int[]data, int lo, int hi){
+    // if (data.length <= 43) {
+    // 	insertionsort(data, 1, data.length);
+    // 	return;
+    // }
     if (lo >= hi) {
       return;
     }
@@ -91,7 +107,7 @@ public class Merge {
 
   public static void main(String[]args) {
   	// int[] test = new int[]{38,27,43,3,9,82,10};
-  	// mergesort(test);
+  	// insertionsort(test,1,test.length);
   	int[] data = new int[]{38,27,43,3,9,82,10};
   	System.out.print("UNSORTED ARRAY: [");
     for (int i = 0; i < data.length; i++) {
